@@ -1,0 +1,52 @@
+### ── Codelab 04 — Arquitectura Limpia y Excepciones Globales ──────────
+
+### 1. GET por ID que no existe (debe responder 404 Not Found con ApiErrorResponse)
+GET http://localhost:8080/api/v1/cliente-service/clientes/999
+Accept: application/json
+
+###
+
+### 2. POST con datos inválidos (debe responder 400 Bad Request con mapa de campos)
+POST http://localhost:8080/api/v1/cliente-service/clientes
+Content-Type: application/json
+
+{
+  "nombre": "",
+  "apellido": "",
+  "email": "no-email",
+  "region": null
+}
+
+###
+
+### 3. DELETE de cliente que no existe (debe responder 404 Not Found)
+DELETE http://localhost:8080/api/v1/cliente-service/clientes/999
+Accept: application/json
+
+###
+
+### 4. GET cliente por ID existente (debe responder 200 OK con la entidad)
+GET http://localhost:8080/api/v1/cliente-service/clientes/1
+Accept: application/json
+
+###
+
+### 5. Listar clientes paginados (debe responder 200 OK con Page<Cliente>)
+GET http://localhost:8080/api/v1/cliente-service/clientes/page/0
+Accept: application/json
+
+###
+
+### 6. POST válido (debe responder 201 Created)
+POST http://localhost:8080/api/v1/cliente-service/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Donald",
+  "apellido": "Knuth",
+  "email": "knuth@stanford.edu",
+  "foto": "knuth.jpg",
+  "region": { "id": 3 }
+}
+
+###
